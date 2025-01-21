@@ -1,27 +1,32 @@
 function setup() {
-    createCanvas(600, 600);
-   background("pink")
-    eyes(200,200);
-   
- }
- 
- function draw() {
- }
- 
- function eyes(x,y) {
-   //left eye
-     fill("white")
-    ellipse(x, y, 80, 50);
-     fill("black")
-     ellipse(x-5,y,30,30)
-    fill("white")
-     rect(x-10, y-10, 10, 10);
-   
-   //right eye
-     fill("white")
-    ellipse(x+200, y, 80, 50);
-     fill("black")
-     ellipse(x+195,y,30,30)
-    fill("white")
-     rect(x+190, y-10, 10, 10);
- }
+  createCanvas(600, 600, WEBGL);
+  
+  background("white");
+
+  
+  EyeOfRah(150,150)
+  EyeOfRah(-150,150)
+  EyeOfRah(4,5)
+  fill (200)
+
+  
+  
+}
+
+function EyeOfRah(x, y){
+  stroke("black")
+
+  strokeWeight(5)
+  fill(200)
+  ellipse(x, y, 80, 40);
+
+  fill(220,20,60);
+  ellipse(x,y,20);
+
+  stroke("grey");
+  strokeWeight();
+  fill("white")
+  ellipse(x,y,3)
+  
+
+}
