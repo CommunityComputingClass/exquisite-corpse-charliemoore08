@@ -1,17 +1,39 @@
 function setup() {
-  createCanvas(600, 600, WEBGL);
-  
-  background("white");
-
-  
-  EyeOfRah(150,150)
-  EyeOfRah(-150,150)
-  EyeOfRah(4,5)
-  fill (200)
-
-  
-  
+  createCanvas(800, 800, WEBGL);
+  background("pink");
+  Head(800,800);
+  mouth()
+  EyeOfRah(150,25);
+  EyeOfRah(-150,25);
+  EyeOfRah(4,-75);
 }
+
+function Head(x,y) {
+  
+  stroke(74, 17, 10);
+  
+  strokeWeight(5);
+
+  fill (137, 207, 240);
+  
+  quad(-250, -250, -250, 250, 250, 200, 200, -200);
+
+  describe('A white square with a black outline drawn on a gray canvas.');
+}
+
+function mouth(x,y){
+
+  stroke(74, 17, 10);
+
+  strokeWeight(2);
+
+  fill(245, 206, 152);
+
+  circle(16, 50, 65);
+
+  describe('A white rhombus with a black outline drawn on a gray canvas.');
+}
+
 
 function EyeOfRah(x, y){
   stroke("black")
@@ -28,5 +50,8 @@ function EyeOfRah(x, y){
   fill("white")
   ellipse(x,y,3)
   
-
 }
+
+
+
+
