@@ -25,7 +25,7 @@ function mouth(x,y){
 
   stroke(74, 17, 10);
 
-  strokeWeight(2);
+  strokeWeight(4);
 
   fill(245, 206, 152);
 
