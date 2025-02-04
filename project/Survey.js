@@ -15,20 +15,22 @@ function setup() {
 
 function draw() { 
   background(bgImage); // backround image
-  fill(255, 150);
+  noStroke()
+  fill(200,200,200,150)
+  rect(0,0,850,240)
+  fill(0);
   text(myMessage, 30, 50);
 
   fill("brown");
-  stroke(0);
-  strokeWeight(1.5);
+  stroke(.5);
   rect(40, 100, likes * 10, 30);
   
   fill("green");
   rect(40, 200, dislikes * 10, 30);
   
   
-  fill(250, 150);
-  textSize(27);
+  fill(0);
+  textSize(15);
   text("Coffee Drinkers: " + likes, 50, 90);
   
   
