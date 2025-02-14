@@ -1,63 +1,77 @@
 let myQuestion = "What is the first thing you do when you wake up?";
-
 let contents = "";
 let all_the_answers = [];
-
 let saveAnswer_button;
 let showAnswers_button;
 let textBox;
+let myFont;
 
-function setup() {
-  createCanvas(500, 400);
-  
-  saveAnswer_button = createButton("save your answer");
-  saveAnswer_button.position(220, 150);
-  saveAnswer_button.mousePressed(saveText);
-
-  showAnswer_button = createButton("see the answers");
-  showAnswer_button.position(220, 300);
-  showAnswer_button.mousePressed(showAnswers);
-
-  textBox = createInput("Type your answer here");
-  textBox.size(200, 40);
-  textBox.position(50, 100);
-  
-  
-  textBox.elt.addEventListener("focus", function () {
-    if (textBox.value() === "Type your answer here") {
-      textBox.value("");
-    }
-  });
-
-  textBox.input(storeText);
-
-  background(156, 56, 14);
-  fill(255);
-  textSize(14);
-  text(myQuestion, 50, 50);
+function preload() {
+  myFont = loadFont("Waffle Cake.otf");
 }
 
-function draw() {}
+function setup() {
+  createCanvas(700, 600);
+  background(50, 50, 50); 
+  textFont(myFont);
+  
+  
+  fill(255);
+  textSize(20);
+  textAlign(CENTER);
+  text(myQuestion, width / 2, 50);
+  
+
+  textBox = createInput("").size(300, 40).position(190, 100);
+  textBox.attribute("placeholder", "Type your answer here");
+  textBox.input(() => contents = textBox.value());
+
+  
+  saveAnswer_button = createButton("Save Answer").position(280, 160);
+  styleButton(saveAnswer_button);
+  saveAnswer_button.mousePressed(saveText);
+
+  
+  showAnswers_button = createButton("See Answers").position(280, 220);
+  styleButton(showAnswers_button);
+  showAnswers_button.mousePressed(showAnswers);
+}
 
 function saveText() {
   if (contents.trim() !== "") {
     all_the_answers.push(contents);
+    contents = "";
+    textBox.value(""); 
   }
-  contents = "";
-  textBox.value("Type your answer here");
-  print(all_the_answers);
-}
-
-function storeText() {
-  contents = this.value();
 }
 
 function showAnswers() {
+  background(30, 30, 30); 
+  fill("White");
+  textSize(16);
+  textAlign(LEFT);
+  
+  let yPos = 80;
+  text("All Answers:", 50, 50);
+  all_the_answers.forEach(answer => {
+    text("- " + answer, 50, yPos);
+    yPos += 30;
+  });
+
+  
   textBox.hide();
   saveAnswer_button.hide();
-  showAnswer_button.hide();
+  showAnswers_button.hide();
+}
 
-  textSize(14);
-  fill("White");
-  text(all_the_answers.join("\n"), 10, 50, 400);
+
+function styleButton(btn) {
+  btn.style("background-color", "#ff9800");
+  btn.style("color", "white");
+  btn.style("border", "none");
+  btn.style("border-radius", "8px");
+  btn.style("padding", "10px 20px");
+  btn.style("font-size", "16px");
+  btn.mouseOver(() => btn.style("background-color", "#e68900"));
+  btn.mouseOut(() => btn.style("background-color", "#ff9800"));
 }
